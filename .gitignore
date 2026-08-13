@@ -1,0 +1,6 @@
+# The CV in assets/ contains a phone number and home address.
+# GitHub Pages serves every file in the repo publicly, whether or not it is linked,
+# so this is kept out of the repo until a redacted public version is made.
+assets/Jiho_Baik_CV.pdf
+
+.DS_Store

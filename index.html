@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jiho Baik</title>
+<meta name="description" content="Jiho Baik — Mechanical Engineering undergraduate at Yonsei University, visiting student researcher at UC Berkeley.">
+
+<meta property="og:title" content="Jiho Baik">
+<meta property="og:description" content="Mechanical Engineering undergraduate at Yonsei University · Visiting student researcher, UC Berkeley">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jiho-baik.github.io">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+
+<style>
+  :root {
+    --bg:         #ffffff;
+    --surface:    #f8f8f6;
+    --border:     #e4e4e0;
+    --text:       #232629;
+    --muted:      #6f7276;
+    --accent:     #1a6fb5;
+    --masthead-h: 3.5rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:      #15171a;
+      --surface: #1d2024;
+      --border:  #2d3137;
+      --text:    #e6e7e4;
+      --muted:   #969a9e;
+      --accent:  #6cb6e8;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ============ Masthead ============ */
+
+  .masthead {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    height: var(--masthead-h);
+  }
+  .masthead-inner {
+    max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; height: 100%;
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  }
+  .site-name {
+    font-weight: 650; font-size: 1.05rem; color: var(--text);
+    letter-spacing: -0.01em; white-space: nowrap;
+  }
+  .site-name:hover { text-decoration: none; }
+  .masthead nav {
+    display: flex; gap: 1.35rem; font-size: 0.9rem;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .masthead nav::-webkit-scrollbar { display: none; }
+  .masthead nav a {
+    color: var(--muted); white-space: nowrap;
+    padding: 0.25rem 0; border-bottom: 2px solid transparent;
+  }
+  .masthead nav a:hover {
+    color: var(--text); text-decoration: none; border-bottom-color: var(--accent);
+  }
+
+  /* ============ Layout ============ */
+
+  .page {
+    max-width: 1080px; margin: 0 auto; padding: 3rem 1.5rem 5rem;
+    display: grid; grid-template-columns: 15rem 1fr; gap: 3.5rem; align-items: start;
+  }
+
+  .sidebar { position: sticky; top: calc(var(--masthead-h) + 2rem); }
+
+  .avatar {
+    display: block; width: 100%; max-width: 11rem; aspect-ratio: 1;
+    border-radius: 50%; object-fit: cover; margin-bottom: 1.25rem;
+    border: 1px solid var(--border);
+  }
+  .avatar-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; max-width: 11rem; aspect-ratio: 1; border-radius: 50%;
+    margin-bottom: 1.25rem; background: var(--surface);
+    border: 1px dashed var(--border); color: var(--muted);
+    font-size: 2.4rem; font-weight: 600; letter-spacing: 0.05em;
+  }
+
+  .sidebar h1 {
+    font-size: 1.3rem; line-height: 1.3; margin: 0 0 0.35rem;
+    font-weight: 650; letter-spacing: -0.01em;
+  }
+  .sidebar .role {
+    font-size: 0.9rem; color: var(--muted); margin: 0 0 1.25rem; line-height: 1.5;
+  }
+
+  .contact {
+    list-style: none; margin: 0; padding: 0; font-size: 0.88rem;
+    border-top: 1px solid var(--border); padding-top: 1rem;
+  }
+  .contact li { margin-bottom: 0.6rem; display: flex; gap: 0.6rem; align-items: center; }
+  .contact .ico { flex: none; color: var(--muted); display: flex; }
+  .contact .ico svg { width: 1rem; height: 1rem; fill: currentColor; display: block; }
+  .contact a { word-break: break-word; }
+  .contact .plain { color: var(--muted); }
+
+  /* ============ Content ============ */
+
+  main { min-width: 0; }
+
+  section { margin-bottom: 3.25rem; scroll-margin-top: calc(var(--masthead-h) + 1.5rem); }
+  section:last-of-type { margin-bottom: 0; }
+
+  h2 {
+    font-size: 1.35rem; font-weight: 650; letter-spacing: -0.01em;
+    margin: 0 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  h3 { font-size: 1rem; font-weight: 650; margin: 0; }
+  p { margin: 0 0 1rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* placeholder shown in sections that aren't written yet */
+  .tbd { color: var(--muted); font-style: italic; font-size: 0.95rem; }
+
+  ul.bullets { margin: 0.5rem 0 0; padding-left: 1.15rem; }
+  ul.bullets li { margin-bottom: 0.4rem; }
+  ul.bullets li:last-child { margin-bottom: 0; }
+
+  .entry { margin-bottom: 1.85rem; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .entry-title { font-weight: 650; }
+  .entry-date {
+    color: var(--muted); font-size: 0.85rem;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+  .entry-sub { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.3rem; }
+
+  .project {
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    margin-bottom: 1.5rem; background: var(--surface);
+  }
+  .project:last-child { margin-bottom: 0; }
+  .project-media {
+    display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    background: var(--border); border-bottom: 1px solid var(--border);
+  }
+  .project-body { padding: 1.1rem 1.25rem 1.25rem; }
+  .project-body p { font-size: 0.95rem; }
+  .project-meta { color: var(--muted); font-size: 0.83rem; margin: 0.15rem 0 0.7rem; }
+  .role-line { font-size: 0.9rem; color: var(--muted); margin-top: 0.65rem; }
+  .role-line strong { color: var(--text); font-weight: 650; }
+  .project-links { margin-top: 0.8rem; font-size: 0.88rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+  .tag {
+    font-size: 0.82rem; padding: 0.2rem 0.7rem; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+  }
+
+  .skill-row {
+    display: grid; grid-template-columns: 8.5rem 1fr;
+    gap: 0.4rem 1rem; margin-bottom: 0.6rem; font-size: 0.94rem;
+  }
+  .skill-label { color: var(--muted); }
+
+  .award-list { margin: 0; padding-left: 1.15rem; }
+  .award-list li { margin-bottom: 0.45rem; }
+  .award-list .year { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  footer {
+    border-top: 1px solid var(--border); color: var(--muted);
+    font-size: 0.84rem; text-align: center; padding: 1.5rem;
+  }
+
+  @media (max-width: 800px) {
+    .page { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 2.25rem; }
+    .sidebar {
+      position: static; display: grid; grid-template-columns: 8rem 1fr;
+      gap: 0 1.25rem; align-items: center;
+    }
+    .avatar, .avatar-placeholder { grid-row: span 3; margin-bottom: 0; font-size: 1.8rem; }
+    .sidebar h1 { align-self: end; }
+    .sidebar .role { margin-bottom: 0; }
+    .contact { grid-column: 1 / -1; margin-top: 1.25rem; columns: 2; column-gap: 1.5rem; }
+    .contact li { break-inside: avoid; }
+  }
+  @media (max-width: 520px) {
+    .sidebar { grid-template-columns: 1fr; text-align: left; }
+    .avatar, .avatar-placeholder { grid-row: auto; max-width: 7.5rem; margin-bottom: 1rem; }
+    .contact { columns: 1; }
+    .skill-row { grid-template-columns: 1fr; gap: 0.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <a class="site-name" href="#top">Jiho Baik</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#awards">Awards</a>
+    </nav>
+  </div>
+</div>
+
+<div class="page" id="top">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <!--
+      TODO: add a photo.
+      Save a square headshot as assets/profile.jpg, then replace the div below with:
+      <img class="avatar" src="assets/profile.jpg" alt="Jiho Baik">
+    -->
+    <div class="avatar-placeholder">JB</div>
+
+    <h1>Jiho Baik</h1>
+    <p class="role">
+      B.S. Mechanical Engineering,<br>Yonsei University<br>
+      Visiting Student Researcher,<br>UC Berkeley
+    </p>
+
+    <ul class="contact">
+      <li>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 4.76-8-4.76V6l8 4.76L20 6z"/></svg></span>
+        <a href="mailto:baikjh@berkeley.edu">baikjh@berkeley.edu</a>
+      </li>
+      <li>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></span>
+        <a href="https://github.com/jiho-baik">github.com/jiho-baik</a>
+      </li>
+      <li>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2 21h6V9H2v12zM11 21h6v-6.5c0-1.7.6-2.9 2.1-2.9 1.2 0 1.7.8 1.9 1.9.1.4.1.9.1 1.4V21h6v-7.3c0-3.6-1.9-5.3-4.5-5.3-2.1 0-3 1.2-3.5 2h-.1V9H11c0 1.7 0 12 0 12z"/></svg></span>
+        <a href="https://www.linkedin.com/in/jiho-baik-a7317a354">LinkedIn</a>
+      </li>
+      <!--
+        CV LINK — deliberately left out for now.
+        assets/Jiho_Baik_CV.pdf currently contains a phone number and home address.
+        Make a public version with those removed, then uncomment this:
+
+      <li>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 13h8v1.6H8V13zm0 3.4h8V18H8v-1.6z"/></svg></span>
+        <a href="assets/Jiho_Baik_CV.pdf">Curriculum Vitae</a>
+      </li>
+      -->
+      <li>
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+        <span class="plain">Berkeley, CA &middot; Seoul, KR</span>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main>
+
+    <!-- ---------- About : EMPTY, structure kept ---------- -->
+    <section id="about">
+      <h2>About</h2>
+      <p class="tbd">Coming soon.</p>
+      <!--
+        Fill in 2–3 short paragraphs: who you are, what you work on, what you're looking for.
+        <p>...</p>
+        <p>...</p>
+      -->
+    </section>
+
+    <!-- ---------- Research : EMPTY, structure kept ---------- -->
+    <section id="research">
+      <h2>Research</h2>
+      <p class="tbd">Coming soon.</p>
+      <!--
+        Interest keywords:
+        <div class="tags">
+          <span class="tag">Keyword</span>
+          <span class="tag">Keyword</span>
+        </div>
+
+        Interests, in a sentence each:
+        <ul class="bullets">
+          <li><strong>Area</strong> &mdash; one line on what within it interests you</li>
+        </ul>
+
+        Then lab experience, one block per position:
+        <h2 style="font-size:1.05rem; border:none; padding:0; margin-bottom:1rem;">Experience</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-title">Lab name, University</span>
+            <span class="entry-date">2026 &ndash; Present</span>
+          </div>
+          <div class="entry-sub">Role &middot; Advisor: Prof. Name</div>
+          <ul class="bullets">
+            <li>What you did.</li>
+          </ul>
+        </div>
+      -->
+    </section>
+
+    <!-- ---------- Projects : EMPTY, structure kept ---------- -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="tbd">Coming soon.</p>
+      <!--
+        One <article> per project. Drop images into assets/ first.
+
+        <article class="project">
+          <img class="project-media" src="assets/name.gif" alt="Short description">
+          <div class="project-body">
+            <h3>Project title</h3>
+            <p class="project-meta">Where &middot; When</p>
+            <p>Two or three sentences on what the system does and what was hard about it.</p>
+            <p class="role-line"><strong>My role:</strong> ...</p>
+            <div class="project-links">
+              <a href="#">Code</a>
+              <a href="#">Video</a>
+            </div>
+          </div>
+        </article>
+      -->
+    </section>
+
+    <!-- ---------- Education : KEPT ---------- -->
+    <section id="education">
+      <h2>Education</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">Yonsei University &mdash; B.S. Mechanical Engineering</span>
+          <span class="entry-date">Expected Feb 2027</span>
+        </div>
+        <div class="entry-sub">Seoul, South Korea &middot; GPA 3.77</div>
+        <p style="font-size:0.9rem; color:var(--muted); margin-top:0.4rem;">
+          Selected coursework: Mechanical System Control, Mechatronics, Mechanical Vibration,
+          Dynamics, Mechanism Design, Computer Aided Mechanical Engineering, Introduction to AI
+          and its Applications.
+        </p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <span class="entry-title">UC Berkeley &mdash; Exchange Student</span>
+          <span class="entry-date">2026</span>
+        </div>
+        <div class="entry-sub">Berkeley, CA &middot; Korea&ndash;U.S. STEM Exchange (KORUS) Program</div>
+      </div>
+    </section>
+
+    <!-- ---------- Awards : KEPT ---------- -->
+    <section id="awards">
+      <h2>Awards &amp; Scholarships</h2>
+      <ul class="award-list">
+        <li>Integrated B.S.&ndash;M.S. Program &mdash; full-tuition M.S. scholarship, Yonsei University <span class="year">(from 2027)</span></li>
+        <li>Korea&ndash;U.S. STEM Exchange (KORUS) Scholarship <span class="year">(2026)</span></li>
+        <li>LIG Nex1 Award, Militech Challenge <span class="year">(2025)</span></li>
+        <li>National Science &amp; Technology Scholarship <span class="year">(2025&ndash;)</span></li>
+        <li>KC Future Scholarship <span class="year">(2024&ndash;)</span> &middot; Woonhae Scholarship <span class="year">(2024)</span></li>
+        <li>Grand Prize (1st Place), Convergence Project Competition, Korea Minjok Leadership Academy <span class="year">(2021)</span></li>
+      </ul>
+    </section>
+
+    <!-- ---------- Skills : EMPTY, structure kept ---------- -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <p class="tbd">Coming soon.</p>
+      <!--
+        <div class="skill-row"><span class="skill-label">Programming</span><span>...</span></div>
+        <div class="skill-row"><span class="skill-label">Robotics</span><span>...</span></div>
+        <div class="skill-row"><span class="skill-label">Control</span><span>...</span></div>
+        <div class="skill-row"><span class="skill-label">Hardware</span><span>...</span></div>
+        <div class="skill-row"><span class="skill-label">Languages</span><span>...</span></div>
+      -->
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <a href="mailto:baikjh@berkeley.edu">baikjh@berkeley.edu</a>
+</footer>
+
+</body>
+</html>
